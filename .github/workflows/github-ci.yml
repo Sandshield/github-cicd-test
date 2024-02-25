@@ -18,19 +18,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Find where I am
-      run: ls -al
-    - name: Change directory to Project
-      run: cd ./WeatherApi/
-    - name: Check directory to Project
-      run: ls -al
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./WeatherApi/
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore ./WeatherApi/
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal ./WeatherApi/
