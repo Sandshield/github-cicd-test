@@ -13,9 +13,13 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+      # matrix:
+      #   os : [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
     - uses: actions/checkout@v3
+    - name: Find where I am
+      run: ls -al
     - name: Change directory to Project
       run: cd ./WeatherApi/
     - name: Setup .NET
