@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'DotNetAgent'
+        label 'dotnet'
     }
     environment {
         DOTNET_CLI_TELEMETRY_OPTOUT = '1' // Disable telemetry
@@ -16,19 +16,19 @@ pipeline {
         stage('Restore') {
             steps {
                 // Restore dependencies using dotnet restore
-                sh 'dotnet restore'
+                sh 'dotnet restore ./WeatherApi'
             }
         }
         stage('Build') {
             steps {
                 // Build the project using dotnet build
-                sh 'dotnet build --configuration Release'
+                sh 'dotnet build --configuration Release ./WeatherApi'
             }
         }
         stage('Test') {
             steps {
                 // Run tests using dotnet test
-                sh 'dotnet test --configuration Release'
+                sh 'dotnet test --configuration Release ./WeatherApi'
             }
         }
         stage('Deploy') {
