@@ -16,12 +16,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Change directory to Project
+      run: cd ./WeatherApi/
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
-    # - name: Change directory to Project
-    #   run: cd ./WeatherApi/
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
