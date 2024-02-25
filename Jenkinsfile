@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent DotNetAgent
     environment {
         DOTNET_CLI_TELEMETRY_OPTOUT = '1' // Disable telemetry
     }
