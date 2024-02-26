@@ -47,4 +47,13 @@ jobs:
       with:
         context: .
         push: true
-        tags: sandshield/heaven:wapi-${{ github.run_number }}
+        tags: sandshield/heaven:wapi:latest
+
+  deploy:
+    needs: image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Docker container
+        run: |
+          docker run -d --name wapi-dc -p 8080:8080 sandshield/wapi:latest
