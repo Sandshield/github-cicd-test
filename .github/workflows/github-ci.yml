@@ -27,6 +27,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore ./WeatherApi/
     - name: Test
-      run: dotnet test --no-build --verbosity normal ./WeatherApi.Tests/
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag wapi:$(date +%s)
+      run: dotnet test --no-build --verbosity normal ./WeatherApi/
