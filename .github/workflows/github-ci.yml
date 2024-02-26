@@ -25,6 +25,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ./WeatherApi/
     - name: Build
-      run: dotnet build  --configuration Release ./WeatherApi.Tests/
+      run: dotnet build --no-restore ./WeatherApi/
     - name: Test
-      run: dotnet test --no-build --verbosity normal ./WeatherApi/
+      run: dotnet test  --configuration Release ./WeatherApi.Tests
