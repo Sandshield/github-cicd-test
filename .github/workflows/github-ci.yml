@@ -29,6 +29,8 @@ jobs:
       # TODO add sonarqube
     - name: Test
       run: dotnet test  --configuration Release ./WeatherApi.Tests
+
+  image:
+    needs: build    
     - name: Build the Docker image
-      needs: [Test]
       run: docker build . --file Dockerfile --tag wapi:$(date +%s)
