@@ -28,7 +28,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Run tests using dotnet test
-                sh 'dotnet test --configuration Release ./WeatherApi'
+                sh 'dotnet test --configuration Release ./WeatherApi.Tests'
             }
         }
         stage('Deploy') {
