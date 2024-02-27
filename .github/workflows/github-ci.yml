@@ -62,7 +62,6 @@ jobs:
         password: ${{ secrets.SERVER_PASSWORD }}
         port: ${{ secrets.SERVER_PORT }}
         script: |
-          ssh -o StrictHostKeyChecking=no -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} "echo Connected to server"
           docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" -p "${{ secrets.DOCKER_HUB_PASSWORD }}"
           docker pull sandshield/heaven:wapi-latest
           docker stop wapi-dc || true
