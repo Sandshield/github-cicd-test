@@ -52,13 +52,16 @@ jobs:
     steps:
     - name: Deploy to server
       uses: appleboy/ssh-action@master
+      env:
+        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+        DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
       with:
         host: ${{ secrets.SERVER_HOST }}
         username: ${{ secrets.SERVER_USERNAME }}
         password: ${{ secrets.SERVER_PASSWORD }}
         port: ${{ secrets.SERVER_PORT }}
         script: |
-          docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
+          docker login -u ${{ DOCKER_HUB_USERNAME }} -p ${{ DOCKER_HUB_PASSWORD }}
           docker pull sandshield/heaven:wapi-latest
           docker stop wapi-dc || true
           docker rm wapi-dc || true
