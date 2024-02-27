@@ -62,7 +62,7 @@ jobs:
         password: ${{ secrets.SERVER_PASSWORD }}
         port: ${{ secrets.SERVER_PORT }}
         script: |
-            echo "${{ secrets.DOCKER_HUB_USERNAME }}" | docker login -u "${{ secrets.DOCKER_HUB_PASSWORD }}" --password-stdin
+            echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME}}" --password-stdin
             docker pull sandshield/heaven:wapi-latest
             docker stop wapi-dc || true
             docker rm wapi-dc   || true
