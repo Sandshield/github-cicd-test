@@ -67,4 +67,3 @@ jobs:
             docker stop wapi-dc || true
             docker rm wapi-dc   || true
             docker run -d --name wapi-dc -p 8080:8080 sandshield/heaven:wapi-latest
- 
