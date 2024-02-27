@@ -59,6 +59,9 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+    - name: Authenticate with Docker Hub
+      run: echo "${{ secrets.DOCKER_HUB_USERNAME }}" | docker login -u "${{ secrets.DOCKER_HUB_PASSWORD }}" --password-stdin
+    
     - name: Deploy to server
       uses: appleboy/ssh-action@master
       with:
