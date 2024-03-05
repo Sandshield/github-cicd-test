@@ -37,9 +37,24 @@ pipeline {
                 // sh 'docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD'
                 sh 'docker build -t wapi-jenkins-latest .'
                 // Push the Docker image
-                // sh 'docker push sandshield/heaven:wapi-jenkins-latest'
+                // sh 'docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD'
+                withCredentials([usernamePassword(credentialsId: 'docker-creds-id', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+                }
+                
+                sh 'docker push sandshield/heaven:wapi-jenkins-latest'
 
             }
         }
+        // stage('Deploy') {
+        //     steps {
+        //         //Build the docker image
+        //         // sh 'docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD'
+        //         sh 'docker build -t wapi-jenkins-latest .'
+        //         // Push the Docker image
+        //         // sh 'docker push sandshield/heaven:wapi-jenkins-latest'
+
+        //     }
+        // }
     }
 }
