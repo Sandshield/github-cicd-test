@@ -31,9 +31,14 @@ pipeline {
                 sh 'dotnet test --configuration Release ./WeatherApi.Tests'
             }
         }
-        stage('Deploy') {
+        stage('Image') {
             steps {
-                echo 'Deploying test....'
+                //Build the docker image
+                // sh 'docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD'
+                sh 'docker build -t wapi-jenkins-latest .'
+                // Push the Docker image
+                // sh 'docker push sandshield/heaven:wapi-jenkins-latest'
+
             }
         }
     }
