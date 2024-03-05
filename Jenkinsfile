@@ -42,6 +42,8 @@ pipeline {
                     sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
                 }
                 
+                // Tag the Docker image
+                sh 'docker tag wapi-jenkins-latest sandshield/heaven:wapi-jenkins-latest'
                 sh 'docker push sandshield/heaven:wapi-jenkins-latest'
 
             }
