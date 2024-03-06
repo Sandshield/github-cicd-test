@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'dotnet'
+        label 'dotnet' 'sshagent'
     }
     environment {
         DOTNET_CLI_TELEMETRY_OPTOUT = '1' // Disable telemetry
