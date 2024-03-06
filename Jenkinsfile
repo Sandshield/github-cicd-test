@@ -48,25 +48,25 @@ pipeline {
 
             }
         }
-        stage('Pull Docker Image') {
-            steps {
-                script {
-                    // SSH into the remote server and pull the Docker image
-                    sshagent(credentials: ['remote-ssh-creds-id']) {
-                        sh 'ssh -o StrictHostKeyChecking=no agent@${env.REMOTE_USER} "docker pull sandshield/heaven:wapi-jenkins-latest"'
-                    }
-                }
-            }
-        }
-        stage('Run Docker Container') {
-            steps {
-                script {
-                    // SSH into the remote server and run the Docker container
-                    sshagent(credentials: ['remote-ssh-creds-id']) {
-                        sh 'ssh -o StrictHostKeyChecking=no agent@${env.REMOTE_USER} "docker run -d --name wapi-j-dc -p 5001:8080 sandshield/heaven:wapi-jenkins-latest"'
-                    }
-                }
-            }
-        }
+        // stage('Pull Docker Image') {
+        //     steps {
+        //         script {
+        //             // SSH into the remote server and pull the Docker image
+        //             sshagent(credentials: ['remote-ssh-creds-id']) {
+        //                 sh 'ssh -o StrictHostKeyChecking=no agent@${env.REMOTE_USER} "docker pull sandshield/heaven:wapi-jenkins-latest"'
+        //             }
+        //         }
+        //     }
+        // }
+        // stage('Run Docker Container') {
+        //     steps {
+        //         script {
+        //             // SSH into the remote server and run the Docker container
+        //             sshagent(credentials: ['remote-ssh-creds-id']) {
+        //                 sh 'ssh -o StrictHostKeyChecking=no agent@${env.REMOTE_USER} "docker run -d --name wapi-j-dc -p 5001:8080 sandshield/heaven:wapi-jenkins-latest"'
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
