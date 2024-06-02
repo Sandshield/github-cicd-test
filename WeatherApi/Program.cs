@@ -1,4 +1,7 @@
 using WeatherApi;
+using WeatherApi.Extensions;
+using WeatherApi.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,8 +10,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Dependency Injection Container
-builder.Services.AddSingleton<WeatherService>();
+builder.Services.AddDependendyInjectionContainer();
+builder.Services.AddMemoryCache();
 
+builder.Services.AddControllers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,12 +25,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/weatherforecast", (WeatherService service) =>
-{
-    var forecast =  service.GetWeather("Seattle");
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.MapControllers();
 
 app.Run();
