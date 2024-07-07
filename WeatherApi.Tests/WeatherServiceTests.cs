@@ -1,43 +1,42 @@
-using WeatherApi.Services;
+using WeatherApi.Infrastructure.Services;
 
-namespace WeatherApi.Tests
+namespace WeatherApi.Tests;
+
+public class WeatherServiceTests
 {
-    public class WeatherServiceTests
+    private readonly FakeWeatherService _fakeWeatherService;
+    private readonly WeatherService _weatherService;
+
+    public WeatherServiceTests()
     {
-        private readonly WeatherService _weatherService;
-        private readonly FakeWeatherService _fakeWeatherService;
+        _weatherService = new WeatherService();
+        _fakeWeatherService = new FakeWeatherService();
+    }
 
-        public WeatherServiceTests()
-        {
-            _weatherService = new();
-            _fakeWeatherService = new();
-        }
+    [Theory]
+    [InlineData("Seattle")]
+    public async Task GetWeather_ReturnsExpectedData_ForValidLocation(string location)
+    {
+        // Arrange
 
-        [Theory]
-        [InlineData("Seattle")]
-        public void GetWeather_ReturnsExpectedData_ForValidLocation(string location)
-        {
-            // Arrange
-            
-            // Act
-            var result = _weatherService.GetWeather(location);
+        // Act
+        var result = await _weatherService.GetWeather(location);
 
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal(5, result.Count());
-        }
-        
-        [Theory]
-        [InlineData("Seattle")]
-        public void GetFakeWeather_ReturnsExpectedData_ForValidLocation(string location)
-        {
-            // Arrange
-            // Act
-            var result = _fakeWeatherService.GetWeather(location);
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(5, result.Count());
+    }
 
-            // Assert
-            Assert.NotNull(result);
-            Assert.Empty(result);
-        }
+    [Theory]
+    [InlineData("Seattle")]
+    public async Task GetFakeWeather_ReturnsExpectedData_ForValidLocation(string location)
+    {
+        // Arrange
+        // Act
+        var result = await _fakeWeatherService.GetWeather(location);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Empty(result);
     }
 }

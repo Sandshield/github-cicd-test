@@ -1,4 +1,4 @@
-namespace WeatherApi.Interfaces;
+namespace WeatherApi.Domain.Interfaces;
 
 public interface IWeatherApiClient
 {

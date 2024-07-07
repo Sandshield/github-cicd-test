@@ -1,4 +1,4 @@
-namespace WeatherApi;
+namespace WeatherApi.Domain.Models;
 
 public sealed record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {

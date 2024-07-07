@@ -1,9 +1,10 @@
-using WeatherApi.Interfaces;
-using WeatherApi.Services;
+using Microsoft.Extensions.DependencyInjection;
+using WeatherApi.Domain.Interfaces;
+using WeatherApi.Infrastructure.Services;
 
-namespace WeatherApi.Extensions;
+namespace WeatherApi.Infrastructure.Extensions;
 
-public static class IServiceCollectionExtensions
+public static class DependencyInjectionExtensions
 {
     public static IServiceCollection AddDependendyInjectionContainer(this IServiceCollection services)
     {
