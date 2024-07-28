@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApi.Domain", "Weathe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApi.Infrastructure", "WeatherApi.Infrastructure\WeatherApi.Infrastructure.csproj", "{D0D4B5FE-EF53-4E66-90AE-03F7FA5A2375}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApi.Database", "WeatherApi.Database\WeatherApi.Database.csproj", "{D73CE788-64B5-4E72-BD7A-886FCF41D332}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{D0D4B5FE-EF53-4E66-90AE-03F7FA5A2375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0D4B5FE-EF53-4E66-90AE-03F7FA5A2375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0D4B5FE-EF53-4E66-90AE-03F7FA5A2375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D73CE788-64B5-4E72-BD7A-886FCF41D332}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D73CE788-64B5-4E72-BD7A-886FCF41D332}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D73CE788-64B5-4E72-BD7A-886FCF41D332}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D73CE788-64B5-4E72-BD7A-886FCF41D332}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

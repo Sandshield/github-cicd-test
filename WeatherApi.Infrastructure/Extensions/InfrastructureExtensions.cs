@@ -4,7 +4,7 @@ using WeatherApi.Infrastructure.Services;
 
 namespace WeatherApi.Infrastructure.Extensions;
 
-public static class DependencyInjectionExtensions
+public static class InfrastructureExtensions
 {
     public static IServiceCollection AddDependendyInjectionContainer(this IServiceCollection services)
     {
